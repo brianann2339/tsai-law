@@ -19,10 +19,30 @@
 | 頁尾「內容最後更新」 | `firm.lastUpdated`（手動維護，改內容時一起改） |
 | LINE 官方帳號 | `office.lineUrl`（目前留空；填入即自動顯示） |
 
-### 放照片
-1. 照片放 `public/images/`，例如 `tsai.jpg`。
-2. `site.ts` 把 `lawyer.photo: ''` 改成 `'tsai.jpg'`。
-3. 建議直式 4:5、短邊 800px 以上。留空會顯示「照片預留位置」，不破版。
+### 照片（已放，2026-09-07）
+
+站上用的兩張圖都是從原檔 `蔡律師形象照.png`（1024×1536 法袍去背）產生的：
+
+| 檔案 | 尺寸 | 用在哪 |
+|---|---|---|
+| `public/images/tsai-portrait.jpg` | 1040×1300（4:5 直幅） | 首頁「關於」區、`/profile/` 頁首 |
+| `public/images/og.jpg` | 1200×630 | 分享到 LINE／Facebook 時的預覽圖 |
+
+⚠️ **原檔背景是全透明的**（53% 的像素 alpha=0），不能直接上網——放到淺色頁面會
+糊成一片、存下來用看圖軟體開會看到灰白格子。所以直幅那張已經先把去背**合成到
+暖米色棚拍底**再輸出；OG 卡那張則是讓她直接站在深綠底上（去背在這裡剛好有用）。
+
+**要換照片或改裁切**：把新原檔放成 `蔡律師形象照.png`，或改
+`scripts/make-photos.py` 最上面的 `FILL`（人物佔畫面寬的比例）與 `HEAD_Y`（頭頂留白），然後
+
+```
+python3 scripts/make-photos.py
+```
+
+會直接覆寫 `public/images/` 兩張圖。需要 Pillow（`pip3 install Pillow`）。
+換成**沒有去背**的一般照片時，`SUBJ_CX / SUBJ_W / HEAD_TOP` 這幾個座標就不適用了，
+直接改成像 hou-law 那樣的矩形裁切即可。
+`site.ts` 的 `lawyer.photo` 留空的話會回到「照片預留位置」，不破版。
 
 ## ⚠️ 改文案前務必先讀
 
@@ -54,7 +74,11 @@ npm run preview
 
 ## 提交給搜尋引擎（第一次上線後做一次）
 
-目前搜「事務所名稱」還找不到本站，要主動提交。兩個平台都做，各約 5 分鐘。
+**Google Search Console 已於 2026-09-07 做完**：資源已建立、擁有權已驗證
+（驗證碼在 `site.ts` 的 `siteVerification.google`，**不要刪**，刪了會掉驗證）、
+`sitemap-index.xml` 已提交、五頁都已送出建立索引要求。首頁已編入索引。
+Sitemap 報表若顯示「無法擷取」是剛提交時的常態，用「網址審查 → 測試線上網址」
+即時測試才準。**Bing 還沒做**，下面的步驟留著備查與日後重做用。
 
 ### Google Search Console
 1. 開 <https://search.google.com/search-console>，用 Google 帳號登入。

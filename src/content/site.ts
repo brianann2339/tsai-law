@@ -84,8 +84,13 @@ export const lawyer = {
    */
   media: [] as { date: string; outlet: string; title: string; note?: string; url: string }[],
 
-  /** 照片檔名，放 public/images/。留空顯示預留位置。家屬 2026-09-07：先保留，之後附上。 */
-  photo: '',
+  /**
+   * 照片檔名，放 public/images/。留空會顯示預留位置、不破版。
+   * 2026-09-07 由家屬提供原檔 `蔡律師形象照.png`（1024×1536 法袍去背，背景全透明）。
+   * 站上這張已把去背合成到暖米色底（4:5，1040×1300）——直接用去背檔會露出格子底。
+   * 裁切／合成腳本與參數見 README 的「照片」段。
+   */
+  photo: 'tsai-portrait.jpg',
 };
 
 /** 合署對象。兩所各自獨立，此區塊用於互連與揭露關係，不可刪。 */
