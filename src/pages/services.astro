@@ -67,11 +67,11 @@ import { firm, lawyer, office, peer, coOffice, serviceGroups } from '../content/
       <h2 class="section-title">沒有列到您的問題？</h2>
       <div class="rule"></div>
       <p class="lede">
-        以上是{lawyer.name}律師主要承辦的類型，不是全部。法律問題常常一開始看起來像 A、談過才發現是 B——初次諮詢不收費，先講講看再說。
+        {coOffice.servicesSummary}
       </p>
       <p class="lede" style="margin-top:1rem">
-        若您的問題屬於<strong>{peer.areas}</strong>，也可以直接聯繫
-        <a href={peer.url}>{peer.firmName}</a>。
+        若您的案件屬於<strong>「行政訴訟（如對公部門處分不服、訴願救濟）」</strong>或<strong>「重大債務清理（如卡債債務更生、清算與破產）」</strong>等領域，同址合署的
+        <a href={peer.url}>{peer.firmName}</a>亦具備豐富專長，歡迎評估聯繫。兩所各自獨立受理委任、各盡其責，為您提供更完整的法律支援。
       </p>
       <div class="cta-row">
         <a class="btn btn--solid" href={telHref(lawyer.tel)}>致電 {lawyer.tel}</a>

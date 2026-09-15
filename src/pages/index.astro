@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { u, telHref } from '../lib/paths';
-import { firm, lawyer, office, peer, consultSteps } from '../content/site';
+import { firm, lawyer, office, peer, coOffice, consultSteps } from '../content/site';
 
 const photoSrc = lawyer.photo ? u(`/images/${lawyer.photo}`) : '';
 ---
@@ -101,9 +101,9 @@ const photoSrc = lawyer.photo ? u(`/images/${lawyer.photo}`) : '';
   <section class="section section--tight">
     <div class="wrap">
       <p class="notice">
-        {office.disclaimer}
-        若您的問題屬於{peer.areas}，也可以直接聯繫
-        <a href={peer.url}>{peer.firmName}</a>。
+        {coOffice.homeIntro}
+        {coOffice.homeTsaiFocus}
+        {coOffice.homePeerLead}<a href={peer.url}>{peer.firmName}</a>。
       </p>
     </div>
   </section>
