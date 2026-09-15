@@ -8,19 +8,22 @@ const photoSrc = lawyer.photo ? u(`/images/${lawyer.photo}`) : '';
 
 <Base
   title="臺南律師"
-  description={`${firm.name}，位於臺南市中西區府前路一段188號。${lawyer.name}律師民國79年取得律師資格，在臺南執業逾三十年。初次諮詢不收費，可電話或視訊。`}
+  description={`${firm.name}，位於臺南市中西區府前路一段188號。${lawyer.name}律師民國79年取得律師資格，在臺南執業逾三十年，主力處理土地與不動產、民事財產與債權、遺產繼承與家事爭端。初次諮詢不收費，可電話或視訊。`}
   current="home"
 >
   <section class="hero">
     <div class="wrap hero__inner">
       <p class="hero__eyebrow">臺南 · 中西區府前路</p>
-      <h1 class="hero__title" aria-label={`${lawyer.name}律師`}>
-        <span>{lawyer.name}</span><em>律師</em>
+      <h1 class="hero__title" aria-label={firm.name}>
+        <span>{lawyer.name}</span><em>律師事務所</em>
       </h1>
       <p class="hero__lede">{lawyer.tagline}</p>
+      <p class="hero__intro">{lawyer.heroIntro}</p>
+      <p class="hero__areas"><span>專長領域</span>{lawyer.featuredAreas.join('｜')}</p>
+      <p class="hero__consult-note">初次諮詢不收費・電話／視訊亦可</p>
       <div class="hero__actions">
         <a class="btn btn--onDeep" href={telHref(lawyer.tel)}>致電 {lawyer.tel}</a>
-        <a class="btn btn--onDeep" href={`mailto:${lawyer.email}`}>來信洽詢</a>
+        <a class="btn btn--onDeep" href={`mailto:${lawyer.email}`}>預約面談或來信</a>
       </div>
       <dl class="hero__meta">
         <div><dt>地址</dt><dd>{office.addressFull}</dd></div>
@@ -141,8 +144,31 @@ const photoSrc = lawyer.photo ? u(`/images/${lawyer.photo}`) : '';
   .hero__lede {
     color: rgba(247, 244, 237, 0.82);
     max-width: 34em;
-    margin-bottom: 2.6rem;
+    margin-bottom: 1.1rem;
     font-size: 1.05rem;
+  }
+  .hero__intro {
+    color: rgba(247, 244, 237, 0.78);
+    max-width: 48em;
+    margin-bottom: 1rem;
+    font-size: 0.98rem;
+  }
+  .hero__areas {
+    color: rgba(247, 244, 237, 0.88);
+    max-width: 52em;
+    margin-bottom: 1.6rem;
+    font-size: 0.88rem;
+  }
+  .hero__areas span {
+    color: var(--accent-soft);
+    letter-spacing: 0.16em;
+    margin-right: 0.8rem;
+  }
+  .hero__consult-note {
+    color: var(--accent-soft);
+    font-size: 0.86rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
   }
   .hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.2rem; }
   .hero__meta {
